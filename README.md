@@ -18,7 +18,7 @@ First clone the repository from Github and switch to the new directory:
 Activate the virtualenv for your project.
 
 ```sh
-$ python virtualenv venv
+$ virtualenv venv
 # windows
 $ source venv/Scripts/activate
 # Linux
