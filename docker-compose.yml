@@ -3,7 +3,6 @@ version: "3.8"
 services:
   mongo:
     image: mongo:latest
-    restart: always
     environment:
       MONGO_INITDB_DATABASE: mydatabase
       MONGO_INITDB_ROOT_USERNAME: myuser
@@ -15,7 +14,7 @@ services:
 
   web:
     build: .
-    command: flask run 0.0.0.0:5000
+    command: flask run --host=0.0.0.0
     ports:
       - "5000:5000"
     volumes:

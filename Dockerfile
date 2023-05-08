@@ -15,6 +15,4 @@ RUN pip install -r requirements.txt
 #Copiar el proyecto
 COPY . .
 
-# Exponer el puerto
-#EXPOSE 5000
 
