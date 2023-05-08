@@ -32,9 +32,15 @@ Install project dependencies:
 
 Create the following environment variables in the .env file
 
-`YOUR_PUBLIC_KEY`
+`FLASK_APP`
 
-`YOUR_ACCESS_TOKEN`
+`FLASK_DEBUG`
+
+`FLASK_ENV`
+
+`SECRET_KEY`
+
+`DATABASE_URI`
 
 You can now run the development server:
 ```sh

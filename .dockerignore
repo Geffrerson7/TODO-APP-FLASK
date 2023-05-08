@@ -1,0 +1,19 @@
+__pycache__/
+
+# archivos de compilación
+*.pyc
+
+# directorios de entornos virtuales
+venv/
+
+# directorios de medios y estáticos
+media/
+
+
+# directorios de configuración local
+local/
+logs/
+
+.venv
+.git
+.gitignore

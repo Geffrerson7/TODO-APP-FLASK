@@ -1,5 +1,9 @@
+import os
 from pymongo import MongoClient
 
-cliente = MongoClient('mongodb://localhost:27017/')
 
-db=cliente['productDB']
+uri = os.environ.get("DATABASE_URI")
+
+cliente = MongoClient(uri)
+
+db = cliente.get_database()
