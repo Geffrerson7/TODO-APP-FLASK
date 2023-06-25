@@ -42,6 +42,8 @@ Create the following environment variables in the .env file
 
 `DATABASE_URI`
 
+`DB_NAME`
+
 You can now run the development server:
 ```sh
 (env)$ flask run
@@ -50,6 +52,30 @@ You can now run the development server:
 And navigate to
 ```sh
 http://127.0.0.1:5000/
+```
+
+## Project installation in Docker
+
+Clone the repository
+
+```bash
+$ git clone https://github.com/Geffrerson7/TODO-APP-FLASK.git
+```
+
+Go to the project directory.
+
+```bash
+$ cd TODO-APP-FLASK
+```
+
+Run the command
+```sh
+$ docker-compose up
+```
+
+And navigate to the route
+```sh
+http://127.0.0.1:8000/
 ```
 
 ## Author

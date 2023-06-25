@@ -11,9 +11,20 @@
     <div class="container-sm mt-5">
         <a href="/" class="btn btn-primary">Regresar</a>
         <div id="task_section">
-            <h1 class="display-4 mt-3">
+            <h1 class="display-6 mt-3">
                 <input id="taskId" type="hidden" value="{{ task._id }}" />
-                <span id="taskText">{{ task.text }}</span>
+                User:
+                <span id="taskUser">{{ task.user }}</span>
+            </h1>
+            <h1 class="display-6 mt-3">
+                <input id="taskId" type="hidden" value="{{ task._id }}" />
+                Starting point:
+                <span id="taskStartingPoint">{{ task.startingPoint }}</span>
+            </h1>
+            <h1 class="display-6 mt-3">
+                <input id="taskId" type="hidden" value="{{ task._id }}" />
+                End point:
+                <span id="taskEndPoint">{{ task.endPoint }}</span>
             </h1>
             <a class="btn btn-secondary" href="javascript: edit(this);">editar</a>
         </div>
