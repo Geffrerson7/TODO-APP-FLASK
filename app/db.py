@@ -6,4 +6,4 @@ uri = os.environ.get("DATABASE_URI")
 
 cliente = MongoClient(uri)
 
-db = cliente.get_database()
+db = cliente[os.environ.get("DB_NAME")]
