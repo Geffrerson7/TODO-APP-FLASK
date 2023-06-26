@@ -8,11 +8,11 @@ App made with Flask and Python to create tasks, mark tasks as done and edit task
 
 First clone the repository from Github and switch to the new directory:
 ```bash
-  $ clone git https://github.com/Geffrerson7/TODO-APP-FLASK.git
+$ clone git https://github.com/Geffrerson7/TODO-APP-FLASK.git
 ```
 
 ```bash
-  $ cd TODO-APP-FLASK
+$ cd TODO-APP-FLASK
 ```
 
 Activate the virtualenv for your project.
@@ -27,7 +27,7 @@ $ source venv/bin/activate
 
 Install project dependencies:
 ```sh
-(env)$ pip install -r requirements.txt
+(venv)$ pip install -r requirements.txt
 ```
 
 Create the following environment variables in the .env file
@@ -46,7 +46,7 @@ Create the following environment variables in the .env file
 
 You can now run the development server:
 ```sh
-(env)$ flask run
+(venv)$ flask run
 ```
 
 And navigate to
@@ -75,7 +75,7 @@ $ docker-compose up
 
 And navigate to the route
 ```sh
-http://127.0.0.1:8000/
+http://127.0.0.1:5000/
 ```
 
 ## Author
