@@ -11,19 +11,19 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    <title>Travel app</title>
+    <title>Todo app</title>
   </head>
   <body class="gradient-custom">
     <header>
       <nav class="navbar navbar-expand-lg p-4">
-        <a class="navbar-brand text-light" href="/">Travel App</a>
+        <a class="navbar-brand text-light" href="/">Todo App</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link text-light" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="/new-task">Create travel</a>
+              <a class="nav-link text-light" href="/new-task">Create task</a>
             </li>
           </ul>
         </div>
@@ -31,7 +31,7 @@
     </header>
     <div class="d-flex justify-content-center">
       <div class="card p-4 mt-4 mb-4 shadow-lg" style="width: 27rem">
-        <h1 class="text-center">Update Travel</h1>
+        <h1 class="text-center">Update Task</h1>
         <form onsubmit="updateTask(event, '{{ task._id }}')" method="POST">
           <div class="mb-3">
             <label class="form-label">User:</label>
