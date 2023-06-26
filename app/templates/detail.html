@@ -1,61 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task: {{ task._id }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container-sm mt-5">
-        <a href="/" class="btn btn-primary">Regresar</a>
-        <div id="task_section">
-            <h1 class="display-6 mt-3">
-                <input id="taskId" type="hidden" value="{{ task._id }}" />
-                User:
-                <span id="taskUser">{{ task.user }}</span>
-            </h1>
-            <h1 class="display-6 mt-3">
-                <input id="taskId" type="hidden" value="{{ task._id }}" />
-                Starting point:
-                <span id="taskStartingPoint">{{ task.startingPoint }}</span>
-            </h1>
-            <h1 class="display-6 mt-3">
-                <input id="taskId" type="hidden" value="{{ task._id }}" />
-                End point:
-                <span id="taskEndPoint">{{ task.endPoint }}</span>
-            </h1>
-            <a class="btn btn-secondary" href="javascript: edit(this);">editar</a>
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="gradient-custom">
+    <header>
+      <nav class="navbar navbar-expand-lg p-4">
+        <a class="navbar-brand text-light" href="/">Travel App</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link text-light" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/new-task"
+                >Create travel</a
+              >
+            </li>
+          </ul>
         </div>
-        
-        <hr>
-        <p>
-            {% if task.createdAt %}
-            Creado en: {{ task.createdAt.strftime("%Y-%m-%d %H:%M:%S") }}
-            {% endif %}
-        </p>
-        {% if task.doneAt %}
-        <p>
-            Completado en: {{ task.doneAt.strftime("%Y-%m-%d %H:%M:%S") }}
-        </p>
-        {% else %}
-            {% if task.deletedAt %}
-            <form action="/done" method="post">
-                <input type="hidden" name="id" value="{{ task._id }}">
-                <button type="submit" class="btn btn-success">Completado</button>
-            </form>
-            {% endif %}
-        {% endif %}
-
-        {% if task.deletedAt %}
-        <p>
-            Eliminado en: {{ task.deletedAt.strftime("%Y-%m-%d %H:%M:%S") }}
-        </p>
-        {% else %}
-        <a class="btn btn-danger" href="/delete/{{ task._id }}">Eliminar</a>
-        {% endif %}
+      </nav>
+    </header>
+      <div class="container mt-4 mb-4">
+        <h1 class="text-center text-light">Travel {{ task._id }}</h1>
+        <div class="row d-flex justify-content-center align-items-center mt-4">
+          <div class="col-md-8 col-lg-4 my-3">
+            <div class="card text-center p-4 shadow-lg">
+              <div class="card-body">
+                <h5 class="card-title mb-4">{{ task.user }}</h5>
+                <p class="card-text">Starting point: {{ task.startingPoint }}</p>
+                <p class="card-text">End point: {{ task.endPoint }}</p>
+                <p class="card-text">
+                  Date: {{ task.date }}
+                </p>
+                <p class="card-text">Amount: s/. {{ task.amount }}</p>
+                <p class="card-text">Reason: {{ task.reason}}</p>
+                <p class="card-text">
+                    {% if task.createdAt %} Created at: {{ task.createdAt.strftime("%Y-%m-%d
+                    %H:%M:%S") }} {% endif %}
+                </p>
+                {% if task.doneAt %}
+                <p class="card-text">Completed at: {{ task.doneAt.strftime("%Y-%m-%d %H:%M:%S") }}</p>
+                 {% else %} {% if task.deletedAt %}
+                 <form action="/done" method="post">
+                   <input type="hidden" name="id" value="{{ task._id }}" />
+                   <div class="row d-flex mx-4 mb-4">
+                    <button type="submit" class="btn btn-success">Completed</button>
+                   </div>
+                 </form>
+                 {% endif %} {% endif %}{% if task.deletedAt %}
+                <p class="card-text">Deleted at: {{ task.deletedAt.strftime("%Y-%m-%d %H:%M:%S") }}</p>
+                {% else %}
+                <div class="row d-flex mx-4">
+                    <button id="deleteButton" class="btn btn-danger mb-2">Delete</button>
+                </div>
+                {% endif %}
+                <div class="row d-flex mx-4">
+                    <a
+                      class="btn btn-info mb-2 mt-2"
+                      href="{{url_for('task_router.update_task', id=task._id)}}"
+                      role="button"
+                      >Edit</a
+                    >
+                    <a href="/" class="btn btn-primary mt-2 mb-2">Back</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-<script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+  <script src="{{ url_for('static', filename='js/delete-alert.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const deleteButton = document.getElementById('deleteButton');
+      const taskId = '{{ task._id }}';
+      
+      deleteButton.addEventListener('click', function(event) {
+        deleteTaskConfirmation(event, taskId);
+      });
+    });
+  </script>
 </html>
