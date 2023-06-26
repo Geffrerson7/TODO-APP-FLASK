@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, url_for, jsonify
+from flask import Blueprint, render_template, redirect, request, jsonify
 from app.db import db
 from datetime import datetime
 from bson.objectid import ObjectId
@@ -12,6 +12,8 @@ task_router = Blueprint("task_router", __name__)
 def index():
     tasks = db.tasks.find()
     task_list = list(tasks)
+    if task_list == []:
+        return render_template("notFound.html")
     return render_template("index.html", task_list=task_list)
 
 
@@ -40,7 +42,7 @@ def add():
 
         db.tasks.insert_one(new_task.to_json())
 
-    return redirect(url_for("task_router.index")), 201
+        return jsonify({"message": "Task created successfully!"}), 201
 
 
 @task_router.route("/task", defaults={"id": None})
@@ -118,4 +120,4 @@ def update_task(id):
             upsert=False,
             return_document=ReturnDocument.AFTER,
         )
-    return jsonify({"message": "Job updated successfully"}), 200
+        return jsonify({"message": "Task updated successfully!"}), 200
